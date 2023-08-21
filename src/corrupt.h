@@ -12,9 +12,9 @@
 #include "viral-progress-info-popover.h"
 #include "viral-progress-icon.h"
 
-#define RAIDER_CORRUPT_TYPE (viral_corrupt_get_type())
+#define VIRAL_CORRUPT_TYPE (viral_corrupt_get_type())
 
-G_DECLARE_FINAL_TYPE(ViralCorrupt, viral_corrupt, RAIDER, CORRUPT, GObject)
+G_DECLARE_FINAL_TYPE(ViralCorrupt, viral_corrupt, VIRAL, CORRUPT, GObject)
 
 ViralCorrupt *viral_corrupt_new(GFile* file, ViralFileRow* row);
 GCancellable* viral_corrupt_start_shredding(ViralCorrupt* self, GAsyncReadyCallback func);

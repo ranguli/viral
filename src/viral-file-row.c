@@ -56,7 +56,7 @@ static void viral_file_row_close (GtkWidget* window, gpointer data);
 
 static void viral_file_row_dispose(GObject *obj)
 {
-    ViralFileRow *row = RAIDER_FILE_ROW(obj);
+    ViralFileRow *row = VIRAL_FILE_ROW(obj);
 
     g_object_unref(row->file);
     gtk_widget_unparent(GTK_WIDGET(row->popover));
@@ -86,7 +86,7 @@ static void viral_file_row_class_init(ViralFileRowClass *klass)
     G_OBJECT_CLASS(klass)->dispose = viral_file_row_dispose; /* Override. */
 
     /* Load the progress icon into the type system. */
-    g_type_ensure(RAIDER_TYPE_PROGRESS_ICON);
+    g_type_ensure(VIRAL_TYPE_PROGRESS_ICON);
 
     gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(klass), "/com/github/ranguli/Viral/viral-file-row.ui");
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(klass), ViralFileRow, progress_button);
@@ -103,7 +103,7 @@ gchar *viral_file_row_get_filename(ViralFileRow *row)
 /* This version of delete tells the viral_window_close_file function to show a toast that shredding is done. */
 static void viral_file_row_delete(GtkWidget *widget, gpointer data)
 {
-    ViralFileRow* row = RAIDER_FILE_ROW(data);
+    ViralFileRow* row = VIRAL_FILE_ROW(data);
     if (row->aborted == TRUE)
     {
         // One file being aborted is enough not to show the notification.
@@ -120,7 +120,7 @@ static void viral_file_row_delete(GtkWidget *widget, gpointer data)
 
 static void viral_file_row_close (GtkWidget* window, gpointer data)
 {
-    ViralFileRow* row = RAIDER_FILE_ROW(data);
+    ViralFileRow* row = VIRAL_FILE_ROW(data);
     row->aborted = TRUE; // We are not shredding the file.
     viral_file_row_delete(NULL, data);
 }
@@ -143,7 +143,7 @@ void shredding_finished(GObject *source_object, GAsyncResult *res, gpointer user
 
 void viral_file_row_launch_shredding(gpointer data)
 {
-    ViralFileRow *row = RAIDER_FILE_ROW(data);
+    ViralFileRow *row = VIRAL_FILE_ROW(data);
 
     row->aborted = FALSE;
     g_mutex_lock (&row->mutex); // This is used by the abort function.
@@ -164,7 +164,7 @@ void viral_file_row_launch_shredding(gpointer data)
 /* This is called when the user clicks abort. */
 void viral_file_row_shredding_abort(gpointer data)
 {
-    ViralFileRow *row = RAIDER_FILE_ROW(data);
+    ViralFileRow *row = VIRAL_FILE_ROW(data);
 
     /* Change the row view. */
     adw_action_row_set_activatable_widget(ADW_ACTION_ROW(row), NULL);
@@ -192,7 +192,7 @@ void viral_file_row_set_progress_num(ViralFileRow* row, double progress)
 
 gboolean viral_file_row_set_progress(gpointer data)
 {
-    ViralFileRow* row = RAIDER_FILE_ROW(data);
+    ViralFileRow* row = VIRAL_FILE_ROW(data);
     viral_progress_icon_set_progress(row->icon, row->progress);
     viral_progress_info_popover_set_progress (row->popover, row->progress);
     return FALSE;
@@ -200,7 +200,7 @@ gboolean viral_file_row_set_progress(gpointer data)
 
 ViralFileRow *viral_file_row_new(GFile *file)
 {
-    ViralFileRow *row = g_object_new(RAIDER_TYPE_FILE_ROW, NULL);
+    ViralFileRow *row = g_object_new(VIRAL_TYPE_FILE_ROW, NULL);
 
     row->file = file;
 

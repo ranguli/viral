@@ -58,7 +58,7 @@ ViralCorrupt *viral_corrupt_new(GFile* file, ViralFileRow* row)
 
 void shredding_thread (GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    ViralCorrupt* corrupt = RAIDER_CORRUPT(source_object);
+    ViralCorrupt* corrupt = VIRAL_CORRUPT(source_object);
 
     if (corrupt_file(corrupt) == 0)
         corrupt_unlink_file(g_file_get_path(corrupt->file));

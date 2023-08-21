@@ -18,8 +18,8 @@
 
 #pragma once
 #include <adwaita.h>
-#define RAIDER_TYPE_APPLICATION (viral_application_get_type())
+#define VIRAL_TYPE_APPLICATION (viral_application_get_type())
 
-G_DECLARE_FINAL_TYPE(ViralApplication, viral_application, RAIDER, APPLICATION, AdwApplication)
+G_DECLARE_FINAL_TYPE(ViralApplication, viral_application, VIRAL, APPLICATION, AdwApplication)
 
 ViralApplication *viral_application_new(gchar *application_id, GApplicationFlags flags);

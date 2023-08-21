@@ -19,9 +19,9 @@
 #pragma once
 #include <gtk/gtk.h>
 #include <adwaita.h>
-#define RAIDER_TYPE_FILE_ROW (viral_file_row_get_type())
+#define VIRAL_TYPE_FILE_ROW (viral_file_row_get_type())
 
-G_DECLARE_FINAL_TYPE(ViralFileRow, viral_file_row, RAIDER, FILE_ROW, AdwActionRow)
+G_DECLARE_FINAL_TYPE(ViralFileRow, viral_file_row, VIRAL, FILE_ROW, AdwActionRow)
 
 ViralFileRow *viral_file_row_new(GFile *file);
 

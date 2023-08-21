@@ -44,7 +44,7 @@ static gboolean viral_progress_icon_draw(GtkDrawingArea *area, cairo_t *cr, int 
     GdkRGBA rgba;
     gdouble alpha;
 
-    g_assert(RAIDER_IS_PROGRESS_ICON(self));
+    g_assert(VIRAL_IS_PROGRESS_ICON(self));
     g_assert(cr != NULL);
 
     gtk_widget_get_allocation(GTK_WIDGET(area), &alloc);
@@ -88,7 +88,7 @@ static gboolean viral_progress_icon_draw(GtkDrawingArea *area, cairo_t *cr, int 
 
 static void viral_progress_icon_get_property(GObject *object, guint prop_id, GValue *value, GParamSpec *pspec)
 {
-    ViralProgressIcon *self = RAIDER_PROGRESS_ICON(object);
+    ViralProgressIcon *self = VIRAL_PROGRESS_ICON(object);
 
     switch (prop_id)
     {
@@ -103,7 +103,7 @@ static void viral_progress_icon_get_property(GObject *object, guint prop_id, GVa
 
 static void viral_progress_icon_set_property(GObject *object, guint prop_id, const GValue *value, GParamSpec *pspec)
 {
-    ViralProgressIcon *self = RAIDER_PROGRESS_ICON(object);
+    ViralProgressIcon *self = VIRAL_PROGRESS_ICON(object);
 
     switch (prop_id)
     {
@@ -118,14 +118,14 @@ static void viral_progress_icon_set_property(GObject *object, guint prop_id, con
 
 gdouble viral_progress_icon_get_progress(ViralProgressIcon *self)
 {
-    g_return_val_if_fail(RAIDER_IS_PROGRESS_ICON(self), 0.0);
+    g_return_val_if_fail(VIRAL_IS_PROGRESS_ICON(self), 0.0);
 
     return self->progress;
 }
 
 void viral_progress_icon_set_progress(ViralProgressIcon *self, gdouble progress)
 {
-    g_return_if_fail(RAIDER_IS_PROGRESS_ICON(self));
+    g_return_if_fail(VIRAL_IS_PROGRESS_ICON(self));
 
     progress = CLAMP(progress, 0.0, 1.0);
 

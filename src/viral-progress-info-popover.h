@@ -20,9 +20,9 @@
 
 #include <gtk/gtk.h>
 
-#define RAIDER_PROGRESS_INFO_POPOVER_TYPE (viral_progress_info_popover_get_type())
+#define VIRAL_PROGRESS_INFO_POPOVER_TYPE (viral_progress_info_popover_get_type())
 
-G_DECLARE_FINAL_TYPE(ViralProgressInfoPopover, viral_progress_info_popover, RAIDER, PROGRESS_INFO_POPOVER, GtkPopover)
+G_DECLARE_FINAL_TYPE(ViralProgressInfoPopover, viral_progress_info_popover, VIRAL, PROGRESS_INFO_POPOVER, GtkPopover)
 
 ViralProgressInfoPopover *viral_progress_info_popover_new();
 void viral_progress_info_popover_set_progress(ViralProgressInfoPopover *popover, gdouble fraction);

@@ -177,9 +177,9 @@ void viral_window_show_toast(ViralWindow *window, gchar *text)
 /* This handles the application and window state. */
 void viral_window_close_file(gpointer data, gpointer user_data)
 {
-    ViralWindow *window = RAIDER_WINDOW(user_data);
+    ViralWindow *window = VIRAL_WINDOW(user_data);
 
-    ViralFileRow *row = RAIDER_FILE_ROW(data);
+    ViralFileRow *row = VIRAL_FILE_ROW(data);
     gchar *filename = viral_file_row_get_filename(row);
 
     gboolean removed = FALSE;
@@ -243,7 +243,7 @@ static void viral_window_open_files_finish(GObject *source_object, GAsyncResult 
 }
 static void viral_window_open_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    ViralWindow *window = RAIDER_WINDOW(source_object);
+    ViralWindow *window = VIRAL_WINDOW(source_object);
 
     GList *file_list = task_data;
     GList *l;
@@ -265,7 +265,7 @@ void viral_window_open_files(ViralWindow *window, GList *file_list)
 /* This is used to open a single file at a time. Returns false if no more files can be loaded, true otherwise. */
 gboolean viral_window_open_file(GFile *file, gpointer data, gchar *title)
 {
-    ViralWindow *window = RAIDER_WINDOW(data);
+    ViralWindow *window = VIRAL_WINDOW(data);
 
     GList *item = window->filenames;
     gchar *filename = g_file_get_path(file);
@@ -348,7 +348,7 @@ gboolean viral_window_open_file(GFile *file, gpointer data, gchar *title)
 /******** Asychronously launch shred on all files. *********/
 static void viral_window_shred_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    ViralWindow *window = RAIDER_WINDOW(source_object);
+    ViralWindow *window = VIRAL_WINDOW(source_object);
 
     /* Update the view. */
     gtk_revealer_set_reveal_child(window->shred_revealer, FALSE);
@@ -359,13 +359,13 @@ static void viral_window_shred_files_finish(GObject *source_object, GAsyncResult
 }
 static void viral_window_shred_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    ViralWindow *window = RAIDER_WINDOW(source_object);
+    ViralWindow *window = VIRAL_WINDOW(source_object);
 
     /* Launch the shredding. */
     int row;
     for (row = 0; row < window->file_count; row++)
     {
-        ViralFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
+        ViralFileRow *file_row = VIRAL_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
         viral_file_row_launch_shredding((gpointer)file_row);
     }
 
@@ -373,7 +373,7 @@ static void viral_window_shred_files_thread(GTask *task, gpointer source_object,
 }
 static void viral_window_start_shredding(GtkWidget *widget, gpointer data)
 {
-    ViralWindow *window = RAIDER_WINDOW(data);
+    ViralWindow *window = VIRAL_WINDOW(data);
 
     gtk_revealer_set_reveal_child(window->open_revealer, FALSE);
     gtk_widget_set_sensitive(GTK_WIDGET(window->shred_button), FALSE);
@@ -390,7 +390,7 @@ static void viral_window_start_shredding(GtkWidget *widget, gpointer data)
 /******** Asychronously abort shredding on all files.  *********/
 static void viral_window_abort_files_finish(GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    ViralWindow *window = RAIDER_WINDOW(source_object);
+    ViralWindow *window = VIRAL_WINDOW(source_object);
 
     if (g_strcmp0((gchar *)user_data, "exit") == 0)
     {
@@ -412,20 +412,20 @@ static void viral_window_abort_files_finish(GObject *source_object, GAsyncResult
 /* This is run asynchronously. */
 static void viral_window_abort_files_thread(GTask *task, gpointer source_object, gpointer task_data, GCancellable *cancellable)
 {
-    ViralWindow *window = RAIDER_WINDOW(source_object);
+    ViralWindow *window = VIRAL_WINDOW(source_object);
 
     /* Abort the shredding. */
     int row;
     for (row = 0; row < window->file_count; row++)
     {
-        ViralFileRow *file_row = RAIDER_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
+        ViralFileRow *file_row = VIRAL_FILE_ROW(gtk_list_box_get_row_at_index(window->list_box, row));
         viral_file_row_shredding_abort((gpointer)file_row);
     }
     // viral_window_abort_file_finish() is called here.
 }
 static void viral_window_abort_shredding(GtkWidget *widget, gpointer data)
 {
-    ViralWindow *window = RAIDER_WINDOW(data);
+    ViralWindow *window = VIRAL_WINDOW(data);
 
     gtk_widget_set_sensitive(GTK_WIDGET(window->abort_button), FALSE);
     gtk_widget_set_sensitive(GTK_WIDGET(window->list_box), FALSE);
@@ -450,7 +450,7 @@ static void viral_window_abort_shredding(GtkWidget *widget, gpointer data)
 /* Updates the list of removable media in the popover in the AdwSplitButton. */
 /*void on_mount_changed(gpointer object, gpointer monitor, gpointer data)
 {
-    ViralWindow *self = RAIDER_WINDOW(data);
+    ViralWindow *self = VIRAL_WINDOW(data);
 
     g_menu_remove_all(self->mount_menu);
 

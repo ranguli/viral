@@ -18,9 +18,9 @@
 
 #pragma once
 #include <gtk/gtk.h>
-#define RAIDER_TYPE_PROGRESS_ICON (viral_progress_icon_get_type())
+#define VIRAL_TYPE_PROGRESS_ICON (viral_progress_icon_get_type())
 
-G_DECLARE_FINAL_TYPE(ViralProgressIcon, viral_progress_icon, RAIDER, PROGRESS_ICON, GtkDrawingArea)
+G_DECLARE_FINAL_TYPE(ViralProgressIcon, viral_progress_icon, VIRAL, PROGRESS_ICON, GtkDrawingArea)
 
 gdouble viral_progress_icon_get_progress(ViralProgressIcon *self);
 void viral_progress_icon_set_progress(ViralProgressIcon *self, gdouble progress);

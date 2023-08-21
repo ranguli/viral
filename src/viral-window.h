@@ -21,9 +21,9 @@
 #include <gtk/gtk.h>
 #include <adwaita.h>
 
-#define RAIDER_TYPE_WINDOW (viral_window_get_type())
+#define VIRAL_TYPE_WINDOW (viral_window_get_type())
 
-G_DECLARE_FINAL_TYPE(ViralWindow, viral_window, RAIDER, WINDOW, AdwApplicationWindow)
+G_DECLARE_FINAL_TYPE(ViralWindow, viral_window, VIRAL, WINDOW, AdwApplicationWindow)
 
 gboolean viral_window_open_file(GFile *file, gpointer data, gchar *title);
 void viral_window_close_file(gpointer data, gpointer user_data);

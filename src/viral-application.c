@@ -30,13 +30,13 @@ G_DEFINE_TYPE(ViralApplication, viral_application, ADW_TYPE_APPLICATION)
 
 ViralApplication *viral_application_new(gchar * application_id, GApplicationFlags flags)
 {
-    return g_object_new(RAIDER_TYPE_APPLICATION, "application-id", application_id, "flags", flags, NULL);
+    return g_object_new(VIRAL_TYPE_APPLICATION, "application-id", application_id, "flags", flags, NULL);
 }
 
 /* Actions. */
 static void viral_new_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
-    ViralWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", GTK_APPLICATION(user_data), NULL);
+    ViralWindow *window = g_object_new(VIRAL_TYPE_WINDOW, "application", GTK_APPLICATION(user_data), NULL);
     gtk_window_present(GTK_WINDOW(window));
 }
 
@@ -54,7 +54,7 @@ static void on_open_response(GObject* source_object, GAsyncResult* res, gpointer
     }
     g_object_unref(list);
 
-    viral_window_open_files(RAIDER_WINDOW(user_data), file_list);
+    viral_window_open_files(VIRAL_WINDOW(user_data), file_list);
 }
 
 static void viral_application_open_to_window(GSimpleAction *action, GVariant *parameter, gpointer user_data)
@@ -74,7 +74,7 @@ static void viral_application_try_exit (GSimpleAction *action, GVariant *paramet
     GList *l;
     for (l = list; l != NULL; l = l->next)
       {
-        if (viral_window_exit(RAIDER_WINDOW(l->data), NULL) == TRUE)
+        if (viral_window_exit(VIRAL_WINDOW(l->data), NULL) == TRUE)
         {
             /* If this executes, shredding is ongoing. */
             do_exit = FALSE;
@@ -114,10 +114,10 @@ static void viral_application_close (GSimpleAction *action, GVariant *parameter,
 
 static void viral_application_show_about(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
-    ViralApplication *self = RAIDER_APPLICATION(user_data);
+    ViralApplication *self = VIRAL_APPLICATION(user_data);
     GtkWindow *window = NULL;
 
-    g_return_if_fail(RAIDER_IS_APPLICATION(self));
+    g_return_if_fail(VIRAL_IS_APPLICATION(self));
     window = gtk_application_get_active_window(GTK_APPLICATION(self));
 
     const gchar *artists[] =
@@ -158,7 +158,7 @@ static void viral_application_show_about(GSimpleAction *action, GVariant *parame
 
 static void viral_application_open(GApplication *application, GFile **files, gint n_files, const gchar *hint)
 {
-    ViralWindow *window = g_object_new(RAIDER_TYPE_WINDOW, "application", application, NULL);
+    ViralWindow *window = g_object_new(VIRAL_TYPE_WINDOW, "application", application, NULL);
 
     /* Convert array of files into a GList. */
     GList *file_list = NULL;
@@ -183,7 +183,7 @@ static void viral_application_activate(GApplication *app)
     /* Get the current window or create one if necessary. */
     GtkWindow *window = gtk_application_get_active_window(GTK_APPLICATION(app));
     if (window == NULL)
-        window = g_object_new(RAIDER_TYPE_WINDOW, "application", app, NULL);
+        window = g_object_new(VIRAL_TYPE_WINDOW, "application", app, NULL);
 
     gtk_window_present(window);
 }

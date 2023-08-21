@@ -148,7 +148,7 @@ gboolean viral_window_exit(ViralWindow *win, gpointer data)
 {
     if (win->status)
     {
-        GtkWidget *dialog = adw_message_dialog_new(GTK_WINDOW(win), _("Stop Shredding?"), NULL);
+        GtkWidget *dialog = adw_message_dialog_new(GTK_WINDOW(win), _("Stop Scanning?"), NULL);
         adw_message_dialog_set_body(ADW_MESSAGE_DIALOG(dialog), _("Are you sure that you want to exit?"));
         g_signal_connect(dialog, "response", G_CALLBACK(viral_window_exit_response), win);
 
@@ -210,7 +210,7 @@ void viral_window_close_file(gpointer data, gpointer user_data)
 
         if (window->show_notification == TRUE)
         {
-            gchar *message = g_strdup(_("Finished shredding files"));
+            gchar *message = g_strdup(_("Finished scanning files"));
 
             gboolean active = gtk_window_is_active(GTK_WINDOW(window));
             if (!active)
@@ -377,7 +377,7 @@ static void viral_window_start_shredding(GtkWidget *widget, gpointer data)
 
     gtk_revealer_set_reveal_child(window->open_revealer, FALSE);
     gtk_widget_set_sensitive(GTK_WIDGET(window->shred_button), FALSE);
-    gtk_button_set_label(window->shred_button, _("Starting Shredding…"));
+    gtk_button_set_label(window->shred_button, _("Starting Scanning…"));
 
     window->status = TRUE;
 

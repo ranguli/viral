@@ -2,8 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 template ViralWindow : Adw.ApplicationWindow {
-  default-width: 800;
-  default-height: 600;
+  default-width: 500;
+  default-height: 450;
   width-request: 360;
   height-request: 200;
   icon-name: "com.github.ranguli.Viral";
@@ -58,9 +58,9 @@ template ViralWindow : Adw.ApplicationWindow {
           Gtk.StackPage empty_page {
           name: "empty_page";
             child: Adw.StatusPage empty_state {
-              title: _("Add files or drop here");
+              title: _("Drag and drop a file here");
               icon-name: "com.github.ranguli.Viral";
-              description: _("Shredding is the obfuscation of a file with random data so the previous contents cannot be recovered.");
+              description: _("Viral will scan it to determine whether or not it could be malicious.");
               hexpand: true;
             };
           }
@@ -96,8 +96,8 @@ template ViralWindow : Adw.ApplicationWindow {
                   margin-start: 5;
                   margin-bottom: 5;
                   Gtk.Button shred_button {
-                    label: _("Shred All");
-                    styles ["destructive-action", "pill"]
+                    label: _("Scan All");
+                    styles ["suggested-action", "pill"]
                   }
                 }
               }
@@ -115,7 +115,7 @@ template ViralWindow : Adw.ApplicationWindow {
                   margin-start: 5;
                   margin-bottom: 5;
                   Gtk.Button abort_button {
-                    label: _("Abort All");
+                    label: _("Cancel Scan");
                     styles ["destructive-action", "pill"]
                   }
                 }

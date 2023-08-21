@@ -1,0 +1,29 @@
+using Gtk 4.0;
+using Adw 1;
+
+template ViralFileRow : Adw.ActionRow {
+  selectable: false;
+  activatable: true;
+
+  [suffix]
+  Gtk.Box controls {
+    valign: center;
+    Gtk.Revealer remove_revealer {
+      reveal-child: true;
+      transition-type: slide_left;
+      Gtk.Button remove_button {
+        icon-name: "edit-delete-symbolic";
+      }
+    }
+    Gtk.Revealer progress_revealer {
+      reveal-child: false;
+      transition-type: slide_left;
+      Gtk.Button progress_button {
+        child: $ViralProgressIcon icon {
+            visible: true;
+        };
+      }
+    }
+  }
+}
+

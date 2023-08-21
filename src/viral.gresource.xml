@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/github/ranguli/Viral">
+    <file>viral-window.ui</file>
+    <file>viral-file-row.ui</file>
+    <file>viral-progress-info-popover.ui</file>
+    <file alias="gtk/help-overlay.ui">viral-shortcuts.ui</file>
+  </gresource>
+</gresources>

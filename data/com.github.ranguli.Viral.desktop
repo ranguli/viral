@@ -1,0 +1,12 @@
+# Translators: Do NOT touch this file!
+[Desktop Entry]
+Name=Viral
+Comment=Securely delete your files
+Exec=viral
+Icon=com.github.ranguli.Viral
+Terminal=false
+Type=Application
+Categories=GTK;Utility;FileTools;Security;
+StartupNotify=true
+X-GNOME-UsesNotifications=true
+X-Purism-FormFactor=Workstation;Mobile;

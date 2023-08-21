@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.ranguli.Viral</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Viral</name>
+  <summary>Securely delete your files</summary>
+  <description>
+    <p>Viral is a GNOME application used for securely deleting your files
+    that you do not want to be recovered.</p>
+  </description>
+  <kudos>
+    <kudo>ModernToolkit</kudo>
+    <kudo>HiDpiIcon</kudo>
+  </kudos>
+  <launchable type="desktop-id">com.github.ranguli.Viral.desktop</launchable>
+  <url type="homepage">https://github.com/ranguli/viral</url>
+  <url type="translate">https://github.com/ranguli/viral/tree/main/po</url>
+  <update_contact>hello@joshmurphy.ca</update_contact>
+  <developer_name>Joshua Murphy</developer_name>
+  <requires>
+    <display_length compare="ge">small</display_length>
+  </requires>
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <display_length compare="ge">small</display_length>
+  </recommends>
+  <supports>
+    <control>tablet</control>
+    <control>touch</control>
+  </supports>
+  <content_rating type="oars-1.1"/>
+  <translation type="gettext">viral</translation>
+  <custom>
+    <value key="Purism::form_factor">workstation</value>
+    <value key="Purism::form_factor">mobile</value>
+  </custom>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/ranguli/viral/main/data/viral-screenshot1.png</image>
+      <image>https://raw.githubusercontent.com/ranguli/viral/main/data/viral-screenshot2.png</image>
+      <image>https://raw.githubusercontent.com/ranguli/viral/main/data/viral-screenshot3.png</image>
+    </screenshot>
+  </screenshots>
+  <releases>
+    <release version="0.1.0" date="2021-12-30">
+      <description>
+        <p>The very first release of Viral. It supports progress tracking, and
+	      has a GNOME compliant interface.</p>
+      </description>
+    </release>
+  </releases>
+</component>
+

@@ -1,0 +1,303 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-28 17:41-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.ranguli.Viral.desktop:4
+#: data/com.github.ranguli.Viral.metainfo.xml:6
+#: src/viral-application.c:140 src/viral-window.blp:40
+msgid "Viral"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.desktop:5
+#: data/com.github.ranguli.Viral.metainfo.xml:7
+msgid "Securely delete your files"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:9
+msgid ""
+"Viral is a simple application used for securely deleting your files "
+"that you do not want to be recovered."
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:20
+msgid "Joshua Murphy"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:48
+msgid "Use custom code for shredding files"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:50
+msgid "Directly import code into Viral for shredding a file"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:51
+msgid "Remove preferences"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:57
+msgid "Fix UI bug when shredding is aborted"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:62
+msgid "Updates to help and application"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:64
+msgid "Add keyboard shortcuts to common actions"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:65
+msgid "Fix memory leaks"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:66
+msgid "Fix crash when backend failed to start"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:67
+msgid "Fix application crash when closing window during shredding"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:68
+msgid "Remove typo in Shred All button"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:69
+msgid "Update Turkish translation"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:70
+msgid "Add more categories to desktop file"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:76
+#: data/com.github.ranguli.Viral.metainfo.xml:104
+msgid "Bug fixes and translation updates"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:78
+msgid "Add Chinese, Turkish, Occitan and Brazilian Portuguese translations"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:79
+msgid "Fix in-app notification crash"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:85
+#: data/com.github.ranguli.Viral.metainfo.xml:94
+msgid "User interface fixes"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:87
+msgid "Add explanatory message and changed initial view's icon"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:88
+msgid "Add icon to add button in headerbar"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:96
+msgid "Fix cropping of keyboard focus ring on shred button"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:97
+msgid "Update preferences to be more concise and explanatory"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:98
+msgid "Add icon to open button in headerbar"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:106
+msgid "Add the French translation"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:107
+msgid "Add the Portuguese translation"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:108
+msgid "Update the Russian translation"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:109
+msgid "Fix progress retrieval bug"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:110
+msgid "Fix display problems"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:116
+msgid "Minor fixes, including:"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:118
+msgid "Move the Shred button to the bottom of the window"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:119
+msgid "Support for mobile devices added"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:120
+msgid "Re-theme the file rows to standard look"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:126
+msgid "A significant rewite of Viral, with a few UI changes changes:"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:128
+msgid "Add checking so a file cannot be loaded twice"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:129
+msgid "Smooth progress tracking"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:130
+msgid "Write using GTK4 and Adwaita"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:131
+msgid "Show desktop notifications if the window is not focused"
+msgstr ""
+
+#: data/com.github.ranguli.Viral.metainfo.xml:137
+msgid ""
+"The very first release of Viral. It supports progress tracking, and "
+"has a GNOME compliant interface."
+msgstr ""
+
+#: src/viral-application.c:66 src/viral-shortcuts.blp:11
+#: src/viral-window.blp:33
+msgid "Add Files"
+msgstr ""
+
+#: src/viral-application.c:154
+msgid "translator-credits"
+msgstr ""
+
+#: src/viral-progress-info-popover.c:62
+msgid "Finishing up..."
+msgstr ""
+
+#: src/viral-progress-info-popover.c:70
+msgid "Estimating..."
+msgstr ""
+
+#: src/viral-shortcuts.blp:8
+msgid "General"
+msgstr ""
+
+#: src/viral-shortcuts.blp:15 src/viral-window.blp:133
+msgid "New Window"
+msgstr ""
+
+#: src/viral-shortcuts.blp:19 src/viral-window.blp:139
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/viral-shortcuts.blp:23
+msgid "CLose Window"
+msgstr ""
+
+#: src/viral-shortcuts.blp:27
+msgid "Quit"
+msgstr ""
+
+#: src/viral-window.blp:31
+msgid "Add"
+msgstr ""
+
+#: src/viral-window.blp:59
+msgid "Add files or drop here"
+msgstr ""
+
+#: src/viral-window.blp:61
+msgid ""
+"Shredding is the obfuscation of a file with random data so the previous "
+"contents cannot be recovered."
+msgstr ""
+
+#: src/viral-window.blp:97 src/viral-window.c:358
+msgid "Shred All"
+msgstr ""
+
+#: src/viral-window.blp:116 src/viral-window.c:410
+msgid "Abort All"
+msgstr ""
+
+#: src/viral-window.blp:143
+msgid "About Viral"
+msgstr ""
+
+#: src/viral-window.c:151
+msgid "Stop Shredding?"
+msgstr ""
+
+#: src/viral-window.c:152
+msgid "Are you sure that you want to exit?"
+msgstr ""
+
+#: src/viral-window.c:155
+msgid "_Cancel"
+msgstr ""
+
+#: src/viral-window.c:155
+msgid "_Exit"
+msgstr ""
+
+#: src/viral-window.c:203
+msgid "Could not remove filename from quick list. Please report this."
+msgstr ""
+
+#: src/viral-window.c:213
+msgid "Finished shredding files"
+msgstr ""
+
+#: src/viral-window.c:281
+msgid "Some files were already loaded"
+msgstr ""
+
+#: src/viral-window.c:294
+msgid "Some files did not exist"
+msgstr ""
+
+#: src/viral-window.c:302
+msgid "Directories are not supported"
+msgstr ""
+
+#: src/viral-window.c:312
+#, c-format
+msgid "Cannot write to “%s”"
+msgstr ""
+
+#: src/viral-window.c:323
+msgid "Cannot load more files"
+msgstr ""
+
+#: src/viral-window.c:380
+msgid "Starting Shredding…"
+msgstr ""
+
+#: src/viral-window.c:432
+msgid "Aborting…"
+msgstr ""

@@ -1,0 +1,10 @@
+data/com.github.ranguli.Viral.desktop
+data/com.github.ranguli.Viral.metainfo.xml
+
+src/viral-application.c
+src/viral-file-row.blp
+src/viral-file-row.c
+src/viral-progress-info-popover.c
+src/viral-shortcuts.blp
+src/viral-window.blp
+src/viral-window.c

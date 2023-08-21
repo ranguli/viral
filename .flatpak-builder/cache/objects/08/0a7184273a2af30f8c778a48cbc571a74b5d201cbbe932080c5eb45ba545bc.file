@@ -1,0 +1,4 @@
+[Application]
+name=com.github.ranguli.Viral
+runtime=org.gnome.Platform/x86_64/45beta
+sdk=org.gnome.Sdk/x86_64/45beta

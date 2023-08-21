@@ -1,0 +1,149 @@
+using Gtk 4.0;
+using Adw 1;
+
+template ViralWindow : Adw.ApplicationWindow {
+  default-width: 800;
+  default-height: 600;
+  width-request: 360;
+  height-request: 200;
+  icon-name: "com.github.ranguli.Viral";
+
+  [content]
+  Adw.ToolbarView {
+    vexpand: true;
+
+    [top]
+    Adw.HeaderBar header_bar {
+      centering-policy: strict;
+
+      [start]
+      Gtk.Revealer open_revealer {
+        reveal-child: true;
+        transition-type: slide_right;
+        /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
+        /*Adw.SplitButton open_button {
+          icon-name: "list-add-symbolic";
+          action-name: "app.open";
+        };*/
+        Gtk.Button open_button {
+          action-name: "app.open";
+          Adw.ButtonContent {
+            label: _("Add");
+            icon-name: "document-open-symbolic";
+            tooltip-text: _("Add Files");
+          }
+        }
+      }
+
+      [title]
+      Adw.WindowTitle title {
+        title: _("Viral");
+      }
+
+      [end]
+      Gtk.MenuButton {
+        icon-name: "open-menu-symbolic";
+        tooltip-text: _("Main Menu");
+        menu-model: primary_menu;
+        primary: true;
+      }
+    }
+
+    content: Adw.ToastOverlay toast_overlay {
+      Gtk.Box contents_box {
+        vexpand: true;
+        margin-top: 24;
+        Gtk.Stack window_stack {
+          transition-type: crossfade;
+          Gtk.StackPage empty_page {
+          name: "empty_page";
+            child: Adw.StatusPage empty_state {
+              title: _("Add files or drop here");
+              icon-name: "com.github.ranguli.Viral";
+              description: _("Shredding is the obfuscation of a file with random data so the previous contents cannot be recovered.");
+              hexpand: true;
+            };
+          }
+
+          Gtk.StackPage list_page {
+            name: "list_page";
+            child: Gtk.Overlay overlay{
+
+              child: Gtk.ScrolledWindow scrolled_window {
+                Adw.Clamp {
+                maximum-size: 700;
+                  Gtk.ListBox list_box {
+                    valign: start;
+                    margin-end: 12;
+                    margin-start: 12;
+                    margin-top: 12;
+                    margin-bottom: 12;
+                    styles ["boxed-list"]
+                  }
+                }
+              };
+              [overlay]
+              Gtk.Revealer shred_revealer {
+                reveal-child: false;
+                transition-type: slide_up;
+                valign: end;
+                halign: center;
+                margin-bottom: 20;
+
+                Gtk.Box {
+                  margin-end: 5;
+                  margin-top: 5;
+                  margin-start: 5;
+                  margin-bottom: 5;
+                  Gtk.Button shred_button {
+                    label: _("Shred All");
+                    styles ["destructive-action", "pill"]
+                  }
+                }
+              }
+              [overlay]
+              Gtk.Revealer abort_revealer {
+                reveal-child: false;
+                transition-type: slide_up;
+                valign: end;
+                halign: center;
+                margin-bottom: 20;
+
+                Gtk.Box {
+                  margin-end: 5;
+                  margin-top: 5;
+                  margin-start: 5;
+                  margin-bottom: 5;
+                  Gtk.Button abort_button {
+                    label: _("Abort All");
+                    styles ["destructive-action", "pill"]
+                  }
+                }
+              }
+            };
+          }
+        }
+      }
+    };
+  }
+}
+
+
+menu primary_menu {
+  section {
+    item {
+      label: _("New Window");
+      action: "app.new-window";
+    }
+  }
+  section {
+    item {
+      label: _("Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+    item {
+      label: _("About Viral");
+      action: "app.about";
+    }
+  }
+}

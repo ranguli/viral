@@ -1,0 +1,46 @@
+{
+    "app-id" : "com.github.ranguli.Viral",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "45beta",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "viral",
+    "finish-args" : [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--filesystem=host",
+        "--device=dri"
+    ],
+    "cleanup" : [
+        "/include",
+        "/share/pkgconfig",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+        {
+            "name" : "blueprint-compiler",
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+                    "commit" : "0cf9a8e4fc61bc9783bb228093ca9ee987ef74e7"
+                }
+            ]
+        },
+        {
+            "name" : "viral",
+            "builddir" : true,
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/ranguli/viral",
+                    "tag" : "v1.2.2",
+                    "commit" : "c15ad21d04a4871b422aa36d791b3f32e6cc0e68"
+                }
+            ]
+        }
+    ]
+}

@@ -64,21 +64,35 @@ struct _ViralWindow
 
 G_DEFINE_TYPE(ViralWindow, viral_window, ADW_TYPE_APPLICATION_WINDOW)
 
+static void viral_window_class_bind_revealers(GtkWidgetClass *widget_class)
+{
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, shred_revealer);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, abort_revealer);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, open_revealer);
+}
+static void viral_window_class_bind_buttons(GtkWidgetClass *widget_class)
+{
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, shred_button);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, abort_button);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, open_button);
+}
+static void viral_window_class_bind_misc_ui(GtkWidgetClass *widget_class)
+{
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, list_box);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, window_stack);)
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, toast_overlay);
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, contents_box);)
+}
+
 static void viral_window_class_init(ViralWindowClass *klass)
 {
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
     gtk_widget_class_set_template_from_resource(widget_class, "/com/github/ranguli/Viral/viral-window.ui");
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, open_button);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, open_revealer);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, shred_button);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, abort_button);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, list_box);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, window_stack);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, shred_revealer);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, abort_revealer);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, toast_overlay);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, contents_box);
+
+    viral_window_class_bind_buttons(widget_class);
+    viral_window_class_bind_revealers(widget_class);
+    viral_window_class_bind_misc_ui(widget_class);
 }
 
 static void viral_window_init(ViralWindow *self)

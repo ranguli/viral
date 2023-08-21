@@ -38,8 +38,6 @@ struct _ViralWindow
 
     GtkBox *contents_box;
     GtkStack *window_stack;
-    /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
-    /*AdwSplitButton *open_button;*/
     GtkButton *open_button;
     GtkRevealer *open_revealer;
     GtkButton *shred_button;
@@ -79,9 +77,9 @@ static void viral_window_class_bind_buttons(GtkWidgetClass *widget_class)
 static void viral_window_class_bind_misc_ui(GtkWidgetClass *widget_class)
 {
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, list_box);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, window_stack);)
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, window_stack);
     gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, toast_overlay);
-    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, contents_box);)
+    gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(widget_class), ViralWindow, contents_box);
 }
 
 static void viral_window_class_init(ViralWindowClass *klass)
@@ -115,19 +113,6 @@ static void viral_window_init(ViralWindow *self)
     g_signal_connect(self->target, "drop", G_CALLBACK(on_drop), self);
     gtk_widget_add_controller(GTK_WIDGET(self->contents_box), GTK_EVENT_CONTROLLER(self->target));
 
-    /* NOTE: NOT USED BECAUSE FLATPAK REMOVES ACCESS TO DEVICE FILES. */
-    /* Create monitor of mounted drives. */
-    /*self->mount_main_menu = g_menu_new();
-    self->mount_menu = g_menu_new();
-    g_menu_prepend_section(self->mount_main_menu, _("Devices"), G_MENU_MODEL(self->mount_menu));
-    adw_split_button_set_menu_model(self->open_button, G_MENU_MODEL(self->mount_main_menu));
-
-    self->monitor = g_volume_monitor_get();
-    g_signal_connect(self->monitor, "mount-added", G_CALLBACK(on_mount_changed), self);
-    g_signal_connect(self->monitor, "mount-changed", G_CALLBACK(on_mount_changed), self);
-    g_signal_connect(self->monitor, "mount-removed", G_CALLBACK(on_mount_changed), self);
-
-    on_mount_changed(NULL, NULL, self);*/
 }
 
 static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, double y, gpointer data)
@@ -139,6 +124,7 @@ static gboolean on_drop(GtkDropTarget *target, const GValue *value, double x, do
     GSList *list = gdk_file_list_get_files(flist);
     GSList *l;
     GList *file_list = NULL;
+
     for (l = list; l != NULL; l = l->next)
     {
         file_list = g_list_append(file_list, g_file_dup(l->data));
@@ -183,6 +169,22 @@ void viral_window_set_show_notification(ViralWindow* window, gboolean show)
     window->show_notification = show;
 }
 
+void viral_window_show_notification()
+{
+    gchar *message = g_strdup(_("Finished scanning files"));
+
+    gboolean active = gtk_window_is_active(GTK_WINDOW(window));
+    if (!active)
+    {
+        GNotification *notification = g_notification_new(message);
+        g_application_send_notification(G_APPLICATION(gtk_window_get_application(GTK_WINDOW(window))), NULL, notification);
+    }
+    else
+        viral_window_show_toast(window, message);
+        g_free(message);
+
+}
+
 void viral_window_show_toast(ViralWindow *window, gchar *text)
 {
     adw_toast_overlay_add_toast(window->toast_overlay, adw_toast_new(text));
@@ -217,6 +219,7 @@ void viral_window_close_file(gpointer data, gpointer user_data)
         g_error(_("Could not remove filename from quick list. Please report this."));
     window->file_count--;
 
+
     if (window->file_count == 0)
     {
         gtk_stack_set_visible_child_name(window->window_stack, "empty_page");
@@ -224,17 +227,7 @@ void viral_window_close_file(gpointer data, gpointer user_data)
 
         if (window->show_notification == TRUE)
         {
-            gchar *message = g_strdup(_("Finished scanning files"));
 
-            gboolean active = gtk_window_is_active(GTK_WINDOW(window));
-            if (!active)
-            {
-                GNotification *notification = g_notification_new(message);
-                g_application_send_notification(G_APPLICATION(gtk_window_get_application(GTK_WINDOW(window))), NULL, notification);
-            }
-            else
-                viral_window_show_toast(window, message);
-            g_free(message);
         }
 
         /* Update the view. */
